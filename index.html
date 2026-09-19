@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rollie O'Malley, software engineer: projects, research and contact.">
+<title>Rollie O'Malley</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#FFFFFF;
+  --ink:#141414;
+  --body:#333131;
+  --muted:#6B6666;
+  --rule:#E4E1E1;
+  --red:#C8102E;
+  --red-dark:#9E0B23;
+  --font:"Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--body);font-family:var(--font);font-size:17px;line-height:1.65;padding-inline:24px;border-top:6px solid var(--red)}
+a{color:var(--red);text-decoration:none}
+a:hover{color:var(--red-dark);text-decoration:underline;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wrap{max-width:980px;margin-inline:auto}
+
+/* header */
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;padding-block:22px;border-bottom:1px solid var(--rule)}
+.mark{font-weight:800;color:var(--ink);font-size:1rem;letter-spacing:-.01em}
+.mark:hover{color:var(--ink);text-decoration:none}
+.bar nav{display:flex;gap:6px 22px;flex-wrap:wrap;font-size:.9rem;font-weight:500}
+.bar nav a{color:var(--muted)}
+.bar nav a:hover{color:var(--red);text-decoration:none}
+
+.intro{padding-block:80px 72px}
+.intro h1{font-size:clamp(2.6rem,7vw,4.4rem);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1.02;margin:0}
+.intro .title{font-size:clamp(1.1rem,2.4vw,1.35rem);font-weight:500;color:var(--red);margin:14px 0 0}
+.intro p.lead{font-size:1.2rem;line-height:1.6;max-width:40em;margin:24px 0 0;color:var(--body)}
+.intro .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.button{display:inline-block;font-weight:600;font-size:.95rem;padding:11px 20px;border:2px solid var(--red);border-radius:3px}
+.button.solid{background:var(--red);color:#FFFFFF}
+.button.solid:hover{background:var(--red-dark);border-color:var(--red-dark);color:#FFFFFF;text-decoration:none}
+.button.line{color:var(--red)}
+.button.line:hover{background:var(--red);color:#FFFFFF;text-decoration:none}
+
+/* sections: label column + content */
+section{display:grid;grid-template-columns:200px 1fr;gap:32px;padding-block:56px;border-top:1px solid var(--rule)}
+section > h2{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--red);margin:6px 0 0}
+section p{margin:0 0 1em;max-width:40em}
+h3{font-size:1.25rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin:0;line-height:1.3}
+
+.entry{padding-block:0 36px;margin-bottom:36px;border-bottom:1px solid var(--rule)}
+.entry:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:4px 16px;flex-wrap:wrap}
+.date{font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sub{color:var(--muted);font-size:.95rem;margin:4px 0 12px}
+.entry ul{margin:0;padding-left:1.15em;max-width:40em}
+.entry ul li{margin-bottom:5px}
+.entry ul li::marker{color:var(--red)}
+.tech{font-size:.9rem;color:var(--muted);margin:12px 0 0}
+.tech b{font-weight:600;color:var(--body)}
+.link{display:inline-block;margin-top:10px;font-weight:600;font-size:.95rem}
+
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px;padding-top:24px;border-top:1px solid var(--rule)}
+.facts div{font-size:.95rem;color:var(--muted);line-height:1.45}
+.facts strong{display:block;color:var(--ink);font-size:1.05rem;font-weight:700;margin-bottom:2px}
+
+.courses{list-style:none;margin:0;padding:0}
+.courses li{display:grid;grid-template-columns:90px 1fr;gap:16px;padding-block:10px;border-bottom:1px solid var(--rule)}
+.courses li:first-child{padding-top:0}
+.courses .code{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.courses .src{color:var(--muted);font-size:.9rem}
+
+.skills{display:grid;grid-template-columns:170px 1fr;gap:10px 20px;margin:0}
+.skills dt{font-weight:700;color:var(--ink)}
+.skills dd{margin:0}
+
+.contact-list{display:grid;gap:8px;font-size:1.1rem}
+.contact-list span{display:inline-block;min-width:90px;color:var(--muted);font-size:.95rem}
+
+footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:28px 48px;border-top:1px solid var(--rule);font-size:.85rem;color:var(--muted)}
+
+@media (max-width:760px){
+  section{grid-template-columns:1fr;gap:20px}
+  .facts{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr;gap:2px}
+  .skills dd{margin-bottom:12px}
+  .intro{padding-block:56px 48px}
+}
+@media (max-width:480px){
+  body{padding-inline:16px}
+  .courses li{grid-template-columns:1fr;gap:0}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="bar">
+    <a class="mark" href="#top">Rollie O’Malley</a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="intro" id="top">
+    <h1>Rollie O’Malley</h1>
+    <p class="title">Software Engineer · High School, Class of 2029</p>
+    <p class="lead">I build production AI systems and hardware, and I study what language models are actually doing internally. At 15 I’ve shipped two AI products with real users, completed MIT coursework in machine learning and cognitive robotics, and field-tested an agricultural drone on a tree farm.</p>
+    <div class="actions">
+      <a class="button solid" href="#projects">View projects</a>
+      <a class="button line" href="https://github.com/Rollie2347" target="_blank" rel="noopener">GitHub</a>
+      <a class="button line" href="mailto:rro@theomalleyfamily.net">Email</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <div>
+      <p>I’m interested in the gap between what AI systems are instructed to do and what they actually do. That interest started when I built a transformer interpretability visualizer at 13, and it still shapes how I build: I want to understand the systems I ship, not treat them as black boxes.</p>
+      <p>I was the first freshman ever selected for my school’s varsity robotics team, where I work with upperclassmen on algorithm design, debugging and performance across mechanical, electrical and software systems.</p>
+      <div class="facts">
+        <div><strong>2 production AI systems</strong>Argus on the iOS App Store and Relio, a SaaS with real users</div>
+        <div><strong>3 MIT courses</strong>Linear algebra, machine learning, and cognitive robotics</div>
+        <div><strong>First freshman</strong>ever selected for varsity robotics</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div>
+      <article class="entry">
+        <div class="entry-head"><h3>Argus</h3><span class="date">2026</span></div>
+        <p class="sub">Real-time multi-agent AI companion · iOS App Store</p>
+        <ul>
+          <li>Production voice AI app built on the Gemini 2.5 Flash Live API</li>
+          <li>14 specialized tool handlers across 6 domains: kitchen, shopping, fix-it, restaurant, web search and memory</li>
+          <li>WebSocket relay bridging client audio to Gemini’s native audio pipeline</li>
+          <li>Firestore-backed persistent memory for context across sessions</li>
+          <li>Real-time voice output with geolocation-aware weather context</li>
+        </ul>
+        <p class="tech"><b>Built with</b> Gemini Live API, Node.js, WebSockets, Firebase/Firestore</p>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head"><h3>Relio</h3><span class="date">2026</span></div>
+        <p class="sub">AI email intelligence SaaS · live with real users</p>
+        <ul>
+          <li>Gmail API integration with a complete OAuth2 refresh-token flow</li>
+          <li>One structured inference call per email for summarization, client detection, priority scoring (1–10) and calendar extraction</li>
+          <li>Background job syncs every user every 30 minutes with incremental fetching</li>
+        </ul>
+        <p class="tech"><b>Built with</b> Firebase Auth, Firestore, Docker, Caddy</p>
+        <a class="link" href="https://relio.cc" target="_blank" rel="noopener">relio.cc →</a>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head"><h3>Autonomous Agricultural Hexacopter</h3><span class="date">2026</span></div>
+        <p class="sub">Hardware · field-tested on a tree farm</p>
+        <p>Designed and built a drone that holds two gallon drums and sprays liquid.</p>
+        <ul>
+          <li>Designed the power system end to end</li>
+          <li>Built ground-station control in place of a conventional RC link</li>
+          <li>Debugged failures by bisecting the stack</li>
+          <li>Real-world testing on a tree farm</li>
+          <li>Future use: window cleaning for office buildings</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head"><h3>AI Receptionist</h3><span class="date">2025</span></div>
+        <p class="sub">24/7 automated phone receptionist for businesses</p>
+        <ul>
+          <li>Handles inbound phone calls with conversational AI</li>
+          <li>Designed to scale with SMS/email confirmations, Google Calendar scheduling and daily summaries</li>
+        </ul>
+        <p class="tech"><b>Built with</b> n8n, Vapi</p>
+        <a class="link" href="tel:+14144419149">Call the live demo: 414-441-9149</a>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head"><h3>Drone Agent Simulation</h3><span class="date">2025</span></div>
+        <p class="sub">MIT 16.412J Cognitive Robotics</p>
+        <ul>
+          <li>Simulated autonomous drone agent that picks up packages, avoids obstacles and manages battery constraints</li>
+          <li>Implemented the decision-making logic and environment interaction</li>
+        </ul>
+        <p class="tech"><b>Built with</b> Python</p>
+        <a class="link" href="https://tzgt95.csb.app/" target="_blank" rel="noopener">Open the simulation →</a>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head"><h3>Stock Price Prediction Model</h3><span class="date">2025</span></div>
+        <p class="sub">Machine learning for time-series forecasting</p>
+        <ul>
+          <li>Enter a stock ticker and the model predicts price movement over the next 50 days</li>
+          <li>Monte Carlo sampling for uncertainty quantification</li>
+        </ul>
+        <p class="tech"><b>Built with</b> Python</p>
+        <a class="link" href="https://8l4z4v.csb.app/" target="_blank" rel="noopener">Try the model →</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <div>
+      <article class="entry">
+        <div class="entry-head"><h3>High vs. Low Volume Resistance Training</h3><span class="date">June 2025</span></div>
+        <p class="sub">A 60-day case study on strength, body composition and joint pain in an adolescent male</p>
+        <p>Designed and ran a 60-day controlled experiment comparing high-volume and low-volume training. Low-volume protocols achieved equal or better outcomes with reduced injury risk.</p>
+        <ul>
+          <li>Formulated the hypothesis and controlled for nutrition, sleep and exercise selection</li>
+          <li>Collected daily quantitative data across multiple metrics</li>
+          <li>Identified the limits of bioelectrical impedance measurement and applied statistical corrections</li>
+          <li>Wrote a formal paper covering methodology, results, discussion and practical applications</li>
+        </ul>
+        <a class="link" href="https://www.academia.edu/130358323/High_vs_Low_Volume_Resistance_Training_A_60_Day_Case_Study_on_Strength_Body_Composition_and_Joint_Pain_in_an_Adolescent_Male" target="_blank" rel="noopener">Read the paper on Academia.edu →</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div>
+      <article class="entry">
+        <div class="entry-head"><h3>High School</h3><span class="date">Class of 2029</span></div>
+        <p class="sub">Varsity Robotics Team · first freshman ever selected</p>
+      </article>
+      <article class="entry">
+        <div class="entry-head"><h3>University-Level Coursework</h3><span class="date">Completed 2025</span></div>
+        <ul class="courses" style="margin-top:14px">
+          <li><span class="code">18.06</span><span>Linear Algebra<br><span class="src">MIT OpenCourseWare</span></span></li>
+          <li><span class="code">6.86x</span><span>Machine Learning with Python: From Linear Models to Deep Learning<br><span class="src">MITx on edX</span></span></li>
+          <li><span class="code">16.412J</span><span>Cognitive Robotics<br><span class="src">MIT OpenCourseWare</span></span></li>
+          <li><span class="code">Udacity</span><span>SQL for Data Analysis · Intro to Algorithms · Data Wrangling with MongoDB</span></li>
+          <li><span class="code">Anthropic</span><span>Claude Platform 101 · Claude Code 101 · Claude Code in Action · Introduction to MCP · MCP: Advanced Topics · Agent Skills · Subagents · AI Fluency · AI Capabilities and Limitations</span></li>
+        </ul>
+      </article>
+      <article class="entry">
+        <h3>Technical Skills</h3>
+        <dl class="skills" style="margin-top:14px">
+          <dt>Languages</dt><dd>Python, Java, JavaScript</dd>
+          <dt>Frameworks &amp; tools</dt><dd>PyTorch, Node.js, Express, React, Firebase/Firestore, Docker, WebSockets, OAuth2, n8n, Vapi, Git, CodeSandbox</dd>
+          <dt>APIs &amp; models</dt><dd>Claude API, Gemini 2.5 Flash Live API, OpenRouter, Gmail API, Google Calendar API</dd>
+          <dt>Robotics &amp; math</dt><dd>Odometry and field-centric control, kinematics and trigonometry, dynamic system modeling, applied linear algebra</dd>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div>
+      <p>I’m open to internships, research opportunities and collaborations in AI and robotics.</p>
+      <div class="contact-list">
+        <div><span>Email</span><a href="mailto:rro@theomalleyfamily.net">rro@theomalleyfamily.net</a></div>
+        <div><span>GitHub</span><a href="https://github.com/Rollie2347" target="_blank" rel="noopener">github.com/Rollie2347</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Rollie O’Malley</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+</div>
+</body>
+</html>
